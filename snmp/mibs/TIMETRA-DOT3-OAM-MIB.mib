@@ -1,0 +1,567 @@
+TIMETRA-DOT3-OAM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+        Integer32, MODULE-IDENTITY,
+        OBJECT-TYPE, Counter32, Counter64,
+        Unsigned32, NOTIFICATION-TYPE                 FROM SNMPv2-SMI
+
+        RowStatus, TimeStamp,
+        TruthValue, TEXTUAL-CONVENTION                FROM SNMPv2-TC
+
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP                            FROM SNMPv2-CONF
+
+        dot3OamEntry, dot3OamLoopbackEntry,
+        dot3OamPeerEntry, dot3OamPeerMacAddress       FROM DOT3-OAM-MIB
+
+        CounterBasedGauge64                           FROM HCNUM-TC
+
+        TmnxEnabledDisabled                           FROM TIMETRA-TC-MIB
+
+        timetraSRMIBModules, tmnxSRObjs,
+        tmnxSRNotifyPrefix, tmnxSRConfs               FROM TIMETRA-GLOBAL-MIB
+
+        ifIndex                                       FROM IF-MIB;
+
+
+timetraDOT3OAMMIBModule MODULE-IDENTITY
+        LAST-UPDATED    "0807010000Z"
+        ORGANIZATION    "Alcatel-Lucent"
+        CONTACT-INFO
+            "Alcatel-Lucent SROS Support
+             Web: http://support.alcatel-lucent.com"
+        DESCRIPTION
+        "This document is the SNMP MIB module to manage and provision Ethernet
+        OAM (802.3ah) functionality for the Alcatel-Lucent SROS device.
+        This includes extensions to the DOT3-OAM-MIB defined in IEEE 802.3ah
+        to allow transmit interval configuration and other locally configured
+        modifications.
+
+        Copyright 2006-2014 Alcatel-Lucent. All rights reserved.
+        Reproduction of this document is authorized on the condition that
+        the foregoing copyright notice is included.
+
+        This SNMP MIB module (Specification) embodies Alcatel-Lucent's
+        proprietary intellectual property.  Alcatel-Lucent retains
+        all title and ownership in the Specification, including any
+        revisions.
+
+        Alcatel-Lucent grants all interested parties a non-exclusive
+        license to use and distribute an unmodified copy of this
+        Specification in connection with management of Alcatel-Lucent
+        products, and without fee, provided this copyright notice and
+        license appear on all copies.
+
+        This Specification is supplied 'as is', and Alcatel-Lucent
+        makes no warranty, either express or implied, as to the use,
+        operation, condition, or performance of the Specification."
+--
+--  Revision History
+--
+        REVISION        "201207010000Z"
+        DESCRIPTION     "Rev 11.0               01 Jul 2012 00:00
+                         11.0 release of the TIMETRA-DOT3-OAM-MIB."
+
+        REVISION        "200807010000Z"
+        DESCRIPTION     "Rev 6.1                01 Jul 2008 00:00
+                         6.1 release of the TIMETRA-DOT3-OAM-MIB."
+
+        REVISION        "200801010000Z"
+        DESCRIPTION     "Rev 6.0                01 Jan 2008 00:00
+                         6.0 release of the TIMETRA-DOT3-OAM-MIB."
+
+        REVISION        "200608010000Z"
+        DESCRIPTION     "Rev 0.1                01 Aug 2006 00:00
+                         Initial version of the TIMETRA-DOT3-OAM-MIB."
+
+        ::= { timetraSRMIBModules 42 }
+
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--
+--  Alcatel-Lucent 7750 SR series Ethernet OAM extensions
+--
+
+tmnxDot3OamObjs           OBJECT IDENTIFIER ::= { tmnxSRObjs 42 }
+tmnxDot3OamMIBConformance OBJECT IDENTIFIER ::= { tmnxSRConfs 42 }
+tmnxDot3OamEntryObjs      OBJECT IDENTIFIER ::= { tmnxDot3OamObjs 1 }
+tmnxDot3OamLoopbackObjs   OBJECT IDENTIFIER ::= { tmnxDot3OamObjs 2 }
+tmnxDot3OamGlobalObjs     OBJECT IDENTIFIER ::= { tmnxDot3OamObjs 3 }
+
+tmnxDot3OamNotifyPrefix    OBJECT IDENTIFIER ::= { tmnxSRNotifyPrefix 42 }
+tmnxDot3OamNotificationsPrefix      OBJECT IDENTIFIER ::= { tmnxDot3OamNotifyPrefix 42 }
+    tmnxDot3OamNotifications      OBJECT IDENTIFIER ::= { tmnxDot3OamNotificationsPrefix 0 }
+
+--
+--  Alcatel-Lucent SROS series Ethernet OAM (802.3ah) Global Configuration
+--
+
+tmnxDot3OamSystemScalarsGroup OBJECT IDENTIFIER ::= { tmnxDot3OamGlobalObjs 1 }
+
+tmnxDot3OamSystemGraceTxEnable OBJECT-TYPE
+    SYNTAX      TruthValue
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The value of tmnxDot3OamSystemGraceTxEnable specifies whether or not
+         grace period notifications will be sent to the EFM-OAM remote peers.
+         The value 'true' enables grace period notifications, and the value
+         'false' suppresses the notifications.
+
+         During an outage, the modification of this object from 'true' to
+         'false' will cause an immediate clear of all grace period
+         notifications, after which no further notifications will be sent. A
+         modification of this object from 'false' to 'true' will not enable the
+         transmission of grace period for any outages currently in progress but
+         will take effect for subsequent outages."
+     DEFVAL { false }
+     ::= { tmnxDot3OamSystemScalarsGroup 1 }
+
+--
+--  Alcatel-Lucent 7750 SR series Ethernet OAM (802.3ah) Table
+--
+tmnxDot3OamTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF TDot3OamEntry
+    MAX-ACCESS    not-accessible
+    STATUS        current
+    DESCRIPTION
+        "The tmnxDot3OamTable is used to store proprietary configuration
+         information on a particular Ethernet like interface (OAM entity)
+         in the system that supports the OAM functions defined in [802.3ah]."
+    ::= { tmnxDot3OamEntryObjs 1 }
+
+    tmnxDot3OamEntry OBJECT-TYPE
+        SYNTAX        TDot3OamEntry
+        MAX-ACCESS    not-accessible
+        STATUS        current
+        DESCRIPTION
+            "An entry in the tmnxDot3OamTable containing configuration
+             information applicable to an OAM entity."
+        AUGMENTS { dot3OamEntry }
+        ::= { tmnxDot3OamTable 1 }
+
+    TDot3OamEntry                    ::= SEQUENCE {
+        tmnxDot3OamLastChanged           TimeStamp,
+        tmnxDot3OamInterval              Unsigned32,
+        tmnxDot3OamMultiplier            Unsigned32,
+        tmnxDot3OamTunneling             TruthValue,
+        tmnxDot3OamLooped                TruthValue,
+        tmnxDot3OamHoldTime              Unsigned32,
+        tmnxDot3OamIgnoreEfmState        TruthValue,
+        tmnxDot3OamGraceTxEnabled        TruthValue,
+        tmnxDot3OamGraceTxState          TruthValue
+    }
+
+     tmnxDot3OamLastChanged OBJECT-TYPE
+        SYNTAX     TimeStamp
+        MAX-ACCESS read-only
+        STATUS     current
+        DESCRIPTION
+                "The value of tmnxDot3OamLastChanged indicates
+                 the sysUpTime value when this row was last modified."
+        ::= { tmnxDot3OamEntry 1 }
+
+    tmnxDot3OamInterval OBJECT-TYPE
+        SYNTAX       Unsigned32 (1..600)
+        UNITS        "100s of milliseconds"
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamInterval specifies the number of 100ms
+            time intervals between each periodic OAMPDU transmit and receive.
+            A lower value implies that OAMPDUs will be transmitted more
+            frequently to the peer, and OAMPDUs must be received more frequently
+            from the peer.  The default is set to 10, meaning 1 second between
+            transmits and receives."
+        DEFVAL { 10 }
+        ::= { tmnxDot3OamEntry 2 }
+
+    tmnxDot3OamMultiplier OBJECT-TYPE
+        SYNTAX       Unsigned32 (2..5)
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamMultiplier specifies how many receive
+            intervals may expire with no OAMPDU receive.  After the configured
+            number of intervals with OAMPDU receive have passed, the OAM
+            negotiation process will restart."
+        DEFVAL { 5 }
+        ::= { tmnxDot3OamEntry 3 }
+
+    tmnxDot3OamTunneling OBJECT-TYPE
+        SYNTAX       TruthValue
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamTunneling specifies if OAMPDUs should
+            be passed transparently through the OAM entity for processing
+            by another OAM entity across the network, or if OAMPDUs should be
+            terminated and processed at the local OAM entity.  This object
+            can only be set to 'true' if dot3OamAdminState is set to 'disabled'.
+            Likewise, dot3OamAdminState can only be set to 'enabled' if this
+            object is set to 'false'.  It is not valid to try and enable both
+            OAMPDU processing and OAMPDU tunneling on the same OAM entity."
+        DEFVAL { false }
+        ::= { tmnxDot3OamEntry 4 }
+
+    tmnxDot3OamLooped OBJECT-TYPE
+        SYNTAX       TruthValue
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamLooped indicates if the OAM entity
+            is receiving OAMPDUs that it transmitted.  A value of 'true'
+            indicates that the OAM entity is receiving it's own OAMPDUs while
+            a value of 'false' indicates it is not."
+        DEFVAL { false }
+        ::= { tmnxDot3OamEntry 5 }
+
+    tmnxDot3OamHoldTime OBJECT-TYPE
+        SYNTAX       Unsigned32 (0..50)
+        UNITS        "seconds"
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamHoldTime specifies the number of seconds
+            the efm-oam protocol should wait after dot3OamOperStatus transitions
+            from 'operational (9)' to a non-operational state before going back
+            to the 'operational (9)' state again.  Note that a transition to the
+            'linkFault (2)' state does not cause tmnxDot3OamHoldTime to be used
+            if dot3OamOperStatus was previously in the 'operational (9)' state."
+        DEFVAL { 0 }
+        ::= { tmnxDot3OamEntry 6 }
+
+    tmnxDot3OamIgnoreEfmState OBJECT-TYPE
+        SYNTAX       TruthValue
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamIgnoreEfmState specifies whether the efm-oam
+            status (dot3OamOperStatus) on a port will affect the operational
+            state of the port it is running on when efm-oam is enabled.  If
+            tmnxDot3OamIgnoreEfmState is set to 'true' then efm-oam status will
+            have no effect on the port state."
+        DEFVAL { false }
+        ::= { tmnxDot3OamEntry 7 }
+
+   tmnxDot3OamGraceTxEnabled OBJECT-TYPE
+       SYNTAX        TruthValue
+       MAX-ACCESS    read-write
+       STATUS        current
+       DESCRIPTION
+           "The value of tmnxDot3OamGraceTxEnabled specifies whether the efm-oam
+            entity on a port will transmit grace-period messages."
+       DEFVAL { true }
+       ::= { tmnxDot3OamEntry 8 }
+
+tmnxDot3OamGraceTxState OBJECT-TYPE
+    SYNTAX      TruthValue
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "The value of tmnxDot3OamGraceTxState indicates whether or not the
+         node is locally executing a grace period. A value of 'true' indicates
+         that all peer timeouts are extended locally and an eligible EFM-OAM
+         entity is transmitting grace period information. A value of 'false'
+         indicates no grace period information is transmitted and standard
+         values are used for timing out remote peers.
+
+         Note that for a local EFM-OAM entity to be eligible for grace period
+         transmission it must be admin up and active, and the port level
+         tmnxDot3OamGraceTxEnabled and global level
+         tmnxDot3OamSystemGraceTxEnable values must be set to 'true'."
+       ::= { tmnxDot3OamEntry 9 }
+
+--
+--  Alcatel-Lucent 7750 SR series Ethernet OAM Peer (802.3ah) Table
+--
+tmnxDot3OamPeerTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF TDot3OamPeerEntry
+    MAX-ACCESS    not-accessible
+    STATUS        current
+    DESCRIPTION
+        "The tmnxDot3OamPeerTable is used to store proprietary configuration
+         information on a particular Ethernet like interface (OAM entity)
+         in the system that supports the OAM functions defined in [802.3ah]."
+    ::= { tmnxDot3OamObjs 4 }
+
+    tmnxDot3OamPeerEntry OBJECT-TYPE
+        SYNTAX        TDot3OamPeerEntry
+        MAX-ACCESS    not-accessible
+        STATUS        current
+        DESCRIPTION
+            "An entry in the tmnxDot3OamPeerTable containing configuration
+             information applicable to an OAM entity."
+        AUGMENTS { dot3OamPeerEntry }
+        ::= { tmnxDot3OamPeerTable 1 }
+
+    TDot3OamPeerEntry                ::= SEQUENCE {
+           tmnxDot3OamPeerGraceRx        TruthValue
+    }
+
+    tmnxDot3OamPeerGraceRx OBJECT-TYPE
+        SYNTAX       TruthValue
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The value of tmnxDot3OamPeerGraceRx indicates that the OAM entity
+            is receiving 'grace-period' notifications through this peer."
+        ::= { tmnxDot3OamPeerEntry 1 }
+
+--
+--  Alcatel-Lucent 7750 SR series Ethernet OAM (802.3ah) Loopback Table
+--
+tmnxDot3OamLoopbackTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF TDot3OamLoopbackEntry
+    MAX-ACCESS    not-accessible
+    STATUS        current
+    DESCRIPTION
+        "The tmnxDot3OamLoopbackTable is used to store proprietary
+         loopback configuration information on a particular
+         Ethernet like interface (OAM entity) in the system that supports
+         the OAM functions defined in [802.3ah]."
+    ::= { tmnxDot3OamLoopbackObjs 1 }
+
+    tmnxDot3OamLoopbackEntry OBJECT-TYPE
+        SYNTAX        TDot3OamLoopbackEntry
+        MAX-ACCESS    not-accessible
+        STATUS        current
+        DESCRIPTION
+            "An entry in the tmnxDot3OamLoopbackTable containing
+             configuration information applicable to an OAM entity."
+        AUGMENTS { dot3OamLoopbackEntry }
+        ::= { tmnxDot3OamLoopbackTable 1 }
+
+    TDot3OamLoopbackEntry ::=
+        SEQUENCE {
+           tmnxDot3OamLoopbackLastChanged     TimeStamp,
+           tmnxDot3OamLoopbackLocalStatus     INTEGER
+        }
+
+    tmnxDot3OamLoopbackLastChanged OBJECT-TYPE
+        SYNTAX     TimeStamp
+        MAX-ACCESS read-only
+        STATUS     current
+        DESCRIPTION
+                "The value of tmnxDot3OamLoopbackLastChanged indicates
+                 the sysUpTime value when this row was last modified."
+        ::= { tmnxDot3OamLoopbackEntry 1 }
+
+    tmnxDot3OamLoopbackLocalStatus OBJECT-TYPE
+        SYNTAX      INTEGER {
+                      noLoopback (1),
+                      localLoopback (2)
+                    }
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+           "The value of tmnxDot3OamLoopbackLocalStatus indicates the local
+            loopback status of the OAM entity.  This attribute allows the user
+            to manually set the local OAM entity loopback mode overriding the
+            802.3ah protocol for loopback.  Setting the value to 'localLoopback'
+            can only be done if dot3OamLoopbackStatus is set to 'noLoopback'.
+            If dot3OamLoopbackStatus is any value other than 'noLoopback', the
+            changes to tmnxDot3OamLoopbackLocalStatus will have no effect.  If
+            dot3OamLoopbackStatus is set to 'localLoopback', the OAM entity will
+            act as if its peer put the OAM entity into local loopback.  This
+            entry allows the user to put an OAM entity into local loopback mode,
+            even if dot3OamLoopbackIgnoreRx is set to 'ignore'."
+        DEFVAL { noLoopback }
+        ::= { tmnxDot3OamLoopbackEntry 2 }
+
+--
+--  Alcatel-Lucent 7750 SR series Ethernet OAM (802.3ah) Notifications
+--
+
+tmnxDot3OamPeerChanged NOTIFICATION-TYPE
+    OBJECTS {
+        dot3OamPeerMacAddress
+    }
+    STATUS  current
+    DESCRIPTION
+        "The tmnxDot3OamPeerChanged notification is generated
+         when the peer information (specifically the Peer MAC address)
+         changes.  Note that this notification will only be sent out
+         if the peer information was previously available and the
+         information changed, and not when the peer information
+         is first learned or becomes unavailable."
+    ::= { tmnxDot3OamNotifications 1 }
+
+tmnxDot3OamLoopDetected NOTIFICATION-TYPE
+    OBJECTS {
+        ifIndex
+    }
+    STATUS  current
+    DESCRIPTION
+        "The tmnxDot3OamLoopDetected notification is generated
+         when a port receives an 802.3ah PDU with a source MAC
+         address that matches the MAC address of that port."
+    ::= { tmnxDot3OamNotifications 2 }
+
+tmnxDot3OamLoopCleared NOTIFICATION-TYPE
+    OBJECTS {
+        ifIndex
+    }
+    STATUS  current
+    DESCRIPTION
+        "The tmnxDot3OamLoopCleared notification is generated
+         when a port is no longer receiving 802.3ah PDUs with
+         a source MAC address that matches the MAC address of
+         that port."
+    ::= { tmnxDot3OamNotifications 3 }
+
+--
+-- Conformance Information
+--
+tmnxDot3OamMIBCompliances OBJECT IDENTIFIER ::= { tmnxDot3OamMIBConformance 1 }
+tmnxDot3OamMIBGroups      OBJECT IDENTIFIER ::= { tmnxDot3OamMIBConformance 2 }
+
+tmnxDot3OamMIBCompliance  MODULE-COMPLIANCE
+    STATUS  obsolete
+    DESCRIPTION
+            "The compliance statement for revision 5.0 of TIMETRA-DOT3-OAM-MIB."
+    MODULE  -- this module
+        MANDATORY-GROUPS {
+            tmnxDot3OamGroup,
+            tmnxDot3OamLoopbackGroup,
+            tmnxDot3OamNotificationGroup
+        }
+    ::= { tmnxDot3OamMIBCompliances 1 }
+
+tmnxDot3OamMIBV6v0Compliance  MODULE-COMPLIANCE
+    STATUS  obsolete
+    DESCRIPTION
+            "The compliance statement for revision 6.0 of TIMETRA-DOT3-OAM-MIB."
+    MODULE  -- this module
+        MANDATORY-GROUPS {
+            tmnxDot3OamV6v0Group,
+            tmnxDot3OamLoopbackGroup,
+            tmnxDot3OamNotificationV6v0Group
+        }
+    ::= { tmnxDot3OamMIBCompliances 2 }
+
+tmnxDot3OamMIBV6v1Compliance  MODULE-COMPLIANCE
+    STATUS  obsolete
+    DESCRIPTION
+            "The compliance statement for revision 6.1 of TIMETRA-DOT3-OAM-MIB."
+    MODULE  -- this module
+        MANDATORY-GROUPS {
+            tmnxDot3OamV6v0Group,
+            tmnxDot3OamV6v1Group,
+            tmnxDot3OamLoopbackGroup,
+            tmnxDot3OamNotificationV6v0Group
+        }
+    ::= { tmnxDot3OamMIBCompliances 3 }
+
+tmnxDot3OamMIBV11v0Compliance    MODULE-COMPLIANCE
+    STATUS  current
+    DESCRIPTION
+            "The compliance statement for revision 11.0 of
+             TIMETRA-DOT3-OAM-MIB."
+    MODULE  -- this module
+        MANDATORY-GROUPS {
+            tmnxDot3OamV6v0Group,
+            tmnxDot3OamV6v1Group,
+            tmnxDot3OamV11v0Group,
+            tmnxDot3OamLoopbackGroup,
+            tmnxDot3OamNotificationV6v0Group,
+            tmnxDot3OamGraceGroup
+        }
+    ::= { tmnxDot3OamMIBCompliances 4 }
+-- units of conformance
+
+tmnxDot3OamGroup           OBJECT-GROUP
+    OBJECTS  {
+          tmnxDot3OamLastChanged,
+          tmnxDot3OamInterval,
+          tmnxDot3OamMultiplier,
+          tmnxDot3OamTunneling
+        }
+    STATUS   obsolete
+    DESCRIPTION
+        "The group of objects providing for management an Ethernet OAM
+         entity on Alcatel 7750 SR series systems."
+    ::= { tmnxDot3OamMIBGroups 1 }
+
+tmnxDot3OamLoopbackGroup           OBJECT-GROUP
+    OBJECTS  {
+          tmnxDot3OamLoopbackLastChanged,
+          tmnxDot3OamLoopbackLocalStatus
+        }
+    STATUS   current
+    DESCRIPTION
+        "The group of objects providing for loopback management an
+         Ethernet OAM entity on Alcatel 7750 SR series systems."
+    ::= { tmnxDot3OamMIBGroups 2 }
+
+tmnxDot3OamNotificationGroup  NOTIFICATION-GROUP
+    NOTIFICATIONS {
+        tmnxDot3OamPeerChanged
+    }
+    STATUS    obsolete
+    DESCRIPTION
+        "The group of notifications supporting Ethernet OAM in on Alcatel 7x50
+         SR series systems."
+    ::= { tmnxDot3OamMIBGroups 3 }
+
+tmnxDot3OamNotificationV6v0Group  NOTIFICATION-GROUP
+    NOTIFICATIONS {
+        tmnxDot3OamPeerChanged,
+        tmnxDot3OamLoopDetected,
+        tmnxDot3OamLoopCleared
+    }
+    STATUS    current
+    DESCRIPTION
+        "The group of notifications supporting Ethernet OAM in on Alcatel 7x50
+         SR series systems release 6.0."
+    ::= { tmnxDot3OamMIBGroups 4 }
+
+tmnxDot3OamV6v0Group           OBJECT-GROUP
+    OBJECTS  {
+          tmnxDot3OamLastChanged,
+          tmnxDot3OamInterval,
+          tmnxDot3OamMultiplier,
+          tmnxDot3OamTunneling,
+          tmnxDot3OamLooped
+        }
+    STATUS   current
+    DESCRIPTION
+        "The group of objects providing management for an Ethernet OAM
+         entity on Alcatel 7750 SR series systems release 6.0."
+    ::= { tmnxDot3OamMIBGroups 5 }
+
+tmnxDot3OamV6v1Group           OBJECT-GROUP
+    OBJECTS  {
+          tmnxDot3OamHoldTime
+        }
+    STATUS   current
+    DESCRIPTION
+        "The group of objects providing management for an Ethernet OAM
+         entity on Alcatel 7750 SR series systems release 6.1."
+    ::= { tmnxDot3OamMIBGroups 6 }
+
+tmnxDot3OamV11v0Group            OBJECT-GROUP
+    OBJECTS {
+          tmnxDot3OamIgnoreEfmState
+        }
+    STATUS   current
+    DESCRIPTION
+        "The group of additional objects providing management for an Ethernet
+        OAM entity on Alcatel SROS series systems release 11.0."
+    ::= { tmnxDot3OamMIBGroups 7 }
+
+tmnxDot3OamGraceGroup            OBJECT-GROUP
+    OBJECTS {
+        tmnxDot3OamSystemGraceTxEnable,
+        tmnxDot3OamGraceTxEnabled,
+        tmnxDot3OamGraceTxState,
+        tmnxDot3OamPeerGraceRx
+    }
+    STATUS   current
+    DESCRIPTION
+        "The group of additional objects providing management for an Ethernet
+        OAM entity to support 'grace-period' messages on Alcatel SROS series
+        systems release 11.0."
+    ::= { tmnxDot3OamMIBGroups 8 }
+
+END
+

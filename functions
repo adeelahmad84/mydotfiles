@@ -1,0 +1,84 @@
+# Create a new directory and enter it
+function mkd() {
+    mkdir -p "$@" && cd "$_";
+}
+
+
+# Determine size of a file or total size of a directory
+function fs() {
+    if du -b /dev/null > /dev/null 2>&1; then
+	local arg=-sbh;
+    else
+	local arg=-sh;
+    fi
+    if [[ -n "$@"  ]]; then
+	du $arg -- "$@";
+    else
+	du $arg .[^.]* *;
+    fi;
+}
+
+# Run `dig` and display the most useful info
+function digga() {
+    dig +nocmd "$1" any +multiline +noall +answer;
+}
+
+function path(){
+    old=$IFS
+    IFS=:
+    printf "%s\n" $PATH
+    IFS=$old
+}
+
+function giveme ()
+{
+    pip install --install-option="--user" "$@"
+}
+
+function tagsearch ()
+{
+    ssh -t db "awk '/community add \"cdn-$2-$1\"/{flag=1;next}/next-hop-self/{flag=0}flag' /data/devicedb_v1_core/$3.$2.isp.sky.com.confg" | sed -e 's/local-preference//' | awk '{print "20"$1}' | sed -n '2'p
+}
+
+function dns_check ()
+{
+    for i in `seq "$1" "$2"`; do echo "$3".$i; dig -x "$3".$i +short @mdns1.bllon.isp.sky.com; sleep 1; done
+}
+
+function extract () {
+        if [ -f $1 ] ; then
+                case $1 in
+                        *.tar.bz2)        tar xjf $1                ;;
+                        *.tar.gz)        tar xzf $1                ;;
+                        *.bz2)                bunzip2 $1                ;;
+                        *.rar)                rar x $1                ;;
+                        *.gz)                gunzip $1                ;;
+                        *.tar)                tar xf $1                ;;
+                        *.tbz2)                tar xjf $1                ;;
+                        *.tgz)                tar xzf $1                ;;
+                        *.zip)                unzip $1                ;;
+                        *.Z)                uncompress $1        ;;
+                        *)                        echo "'$1' cannot be extracted via extract()" ;;
+                esac
+        else
+                echo "'$1' is not a valid file"
+        fi
+}
+
+function pypath {
+    if [ "$1" = "" ]; then
+	export PYTHONPATH=$PYTHONPATH:`pwd -P`
+    else
+	export PYTHONPATH=$PYTHONPATH:`pushd -n $1; pwd -P; popd -n`
+    fi
+    echo $PYTHONPATH
+}
+
+function show ()
+{
+    apt-cache search $1
+}
+
+function find_entry {
+    snmpwalk -v2c -c kN8qpTxH "$1" TIMETRA-ROUTE-POLICY-MIB::tRPOperPSParamsRowStatus | egrep "EXPORT-TO-IBGP6"
+}

@@ -26,13 +26,9 @@ alias ld="ls -lF --color | grep --color=never '^d'"
 
 # Always use color output for `ls`
 alias ls="command ls --color"
-export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
 # Get week number
 alias week='date +%V'
-
-# Stopwatch
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -44,13 +40,8 @@ alias reload="exec $SHELL -l"
 
 alias remove='ssh-keygen -R'
 
-alias syslog='ssh syslog3l.nme.bllon.isp.sky.com'
-alias taillog='ssh -t syslog3l.nme.bllon.isp.sky.com /home/francis.tilley/scripts/syslog/./ltail.sh'
-
-alias region_info='curl -k https://core.iap.sns.sky.com/dbbrowser/query/public_views/region_info_v'
-alias cdn_capacity='curl -k https://core.iap.sns.sky.com/dbbrowser/query/public_views/periodic_cdn_capacity'
-alias cdn_ip='curl -k https://ip.noctools.isp.sky.com/franco/cdnsites'
-
 alias agent='eval $(ssh-agent -s)'
 
 alias gti='git'
+
+alias t='todo.sh'

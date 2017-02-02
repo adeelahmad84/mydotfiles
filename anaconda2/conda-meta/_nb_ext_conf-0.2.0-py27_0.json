@@ -1,0 +1,30 @@
+{
+  "arch": "x86_64", 
+  "build": "py27_0", 
+  "build_number": 0, 
+  "depends": [
+    "nb_anacondacloud", 
+    "nb_conda", 
+    "nb_conda_kernels", 
+    "nbpresent", 
+    "notebook >=4.2.0", 
+    "python 2.7*"
+  ], 
+  "files": [
+    "etc/jupyter/jupyter_notebook_config.json", 
+    "etc/jupyter/nbconfig/notebook.json", 
+    "etc/jupyter/nbconfig/tree.json"
+  ], 
+  "installed_by": "Anaconda2-4.1.1-MacOSX-x86_64", 
+  "license": "BSD", 
+  "link": {
+    "source": "/Users/adeel/anaconda2/pkgs/_nb_ext_conf-0.2.0-py27_0", 
+    "type": "hard-link"
+  }, 
+  "md5": "7abc34bc31462f284bddb97c65218656", 
+  "name": "_nb_ext_conf", 
+  "platform": "osx", 
+  "subdir": "osx-64", 
+  "url": "https://repo.continuum.io/pkgs/free/osx-64/_nb_ext_conf-0.2.0-py27_0.tar.bz2", 
+  "version": "0.2.0"
+}

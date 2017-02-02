@@ -1,0 +1,40 @@
+{
+  "arch": "x86_64", 
+  "build": "0", 
+  "build_number": 0, 
+  "depends": [
+    "openssl 1.0.2*", 
+    "zlib 1.2.*"
+  ], 
+  "files": [
+    "bin/curl", 
+    "bin/curl-config", 
+    "include/curl/curl.h", 
+    "include/curl/curlbuild.h", 
+    "include/curl/curlrules.h", 
+    "include/curl/curlver.h", 
+    "include/curl/easy.h", 
+    "include/curl/mprintf.h", 
+    "include/curl/multi.h", 
+    "include/curl/stdcheaders.h", 
+    "include/curl/typecheck-gcc.h", 
+    "lib/libcurl.4.dylib", 
+    "lib/libcurl.a", 
+    "lib/libcurl.dylib", 
+    "lib/libcurl.la", 
+    "lib/pkgconfig/libcurl.pc"
+  ], 
+  "installed_by": "Anaconda2-4.1.1-MacOSX-x86_64", 
+  "license": "MIT/X derivate (http://curl.haxx.se/docs/copyright.html)", 
+  "license_family": "MIT", 
+  "link": {
+    "source": "/Users/adeel/anaconda2/pkgs/curl-7.49.0-0", 
+    "type": "hard-link"
+  }, 
+  "md5": "f3c8862b00ad7f68b55d91b9c02e4df6", 
+  "name": "curl", 
+  "platform": "osx", 
+  "subdir": "osx-64", 
+  "url": "https://repo.continuum.io/pkgs/free/osx-64/curl-7.49.0-0.tar.bz2", 
+  "version": "7.49.0"
+}

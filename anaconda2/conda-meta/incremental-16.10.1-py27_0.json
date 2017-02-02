@@ -1,0 +1,48 @@
+{
+  "arch": "x86_64", 
+  "build": "py27_0", 
+  "build_number": 0, 
+  "channel": "https://repo.continuum.io/pkgs/free/osx-64", 
+  "date": "2016-10-31", 
+  "depends": [
+    "python 2.7*"
+  ], 
+  "files": [
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/PKG-INFO", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/SOURCES.txt", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/dependency_links.txt", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/entry_points.txt", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/not-zip-safe", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/requires.txt", 
+    "lib/python2.7/site-packages/incremental-16.10.1-py2.7.egg-info/top_level.txt", 
+    "lib/python2.7/site-packages/incremental/__init__.py", 
+    "lib/python2.7/site-packages/incremental/__init__.pyc", 
+    "lib/python2.7/site-packages/incremental/_version.py", 
+    "lib/python2.7/site-packages/incremental/_version.pyc", 
+    "lib/python2.7/site-packages/incremental/tests/__init__.py", 
+    "lib/python2.7/site-packages/incremental/tests/__init__.pyc", 
+    "lib/python2.7/site-packages/incremental/tests/test_update.py", 
+    "lib/python2.7/site-packages/incremental/tests/test_update.pyc", 
+    "lib/python2.7/site-packages/incremental/tests/test_version.py", 
+    "lib/python2.7/site-packages/incremental/tests/test_version.pyc", 
+    "lib/python2.7/site-packages/incremental/update.py", 
+    "lib/python2.7/site-packages/incremental/update.pyc"
+  ], 
+  "fn": "incremental-16.10.1-py27_0.tar.bz2", 
+  "license": "MIT License", 
+  "license_family": "MIT", 
+  "link": {
+    "source": "/Users/adeel/anaconda2/pkgs/incremental-16.10.1-py27_0", 
+    "type": "hard-link"
+  }, 
+  "md5": "29613427784096f31a09b3c821e973e4", 
+  "name": "incremental", 
+  "platform": "osx", 
+  "priority": 2, 
+  "requires": [], 
+  "schannel": "defaults", 
+  "size": 25776, 
+  "subdir": "osx-64", 
+  "url": "https://repo.continuum.io/pkgs/free/osx-64/incremental-16.10.1-py27_0.tar.bz2", 
+  "version": "16.10.1"
+}

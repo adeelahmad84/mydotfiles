@@ -1,0 +1,7 @@
+{
+  "load_extensions": {
+    "nb_anacondacloud/main": true, 
+    "nb_conda/main": true, 
+    "nbpresent/js/nbpresent.min": true
+  }
+}

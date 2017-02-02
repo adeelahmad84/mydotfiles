@@ -23,7 +23,7 @@
 	attributesfile = ~/.gitattributes
 
 [commit]
-	template = /home/adeel.ahmad/.gitmessage.txt
+	template = $HOME/.gitmessage.txt
 
 [color]
 	ui = true

@@ -1,0 +1,38 @@
+{
+  "arch": "x86_64", 
+  "binstar": {
+    "channel": "main", 
+    "owner_id": "56031d0234e76b531b7a0a4c", 
+    "package_id": "5638e3f37bb5bd0a88913e39"
+  }, 
+  "build": "py27_0", 
+  "build_number": 0, 
+  "channel": "https://conda.anaconda.org/scrapinghub/osx-64", 
+  "depends": [
+    "pyasn1 >=0.1.4", 
+    "python 2.7*"
+  ], 
+  "files": [
+    "lib/python2.7/site-packages/pyasn1_modules-0.0.5-py2.7.egg", 
+    "lib/python2.7/site-packages/pyasn1_modules.pth"
+  ], 
+  "fn": "pyasn1-modules-0.0.5-py27_0.tar.bz2", 
+  "license": "BSD License", 
+  "link": {
+    "source": "/Users/adeel/anaconda2/pkgs/pyasn1-modules-0.0.5-py27_0", 
+    "type": "hard-link"
+  }, 
+  "machine": "x86_64", 
+  "md5": "2b3d1e87aa6fdc589d1126429884fd8e", 
+  "name": "pyasn1-modules", 
+  "operatingsystem": "darwin", 
+  "platform": "osx", 
+  "priority": 1, 
+  "requires": [], 
+  "schannel": "scrapinghub", 
+  "size": 76402, 
+  "subdir": "osx-64", 
+  "target-triplet": "x86_64-any-darwin", 
+  "url": "https://conda.anaconda.org/scrapinghub/osx-64/pyasn1-modules-0.0.5-py27_0.tar.bz2", 
+  "version": "0.0.5"
+}

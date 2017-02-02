@@ -1,0 +1,505 @@
+dig jumpbox.myddns.me
+ping jumpbox.myddns.me
+dig coefficientdata.uk
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk NS
+dig ns36.domaincontrol.com A
+dig ns37.domaincontrol.com A
+dig ns35.domaincontrol.com A
+dig ns36.domaincontrol.com A
+dig ns36.domaincontrol.com A
+dig ns35.domaincontrol.com A
+dig ns36.domaincontrol.com A
+dig ns35.domaincontrol.com A
+dig ns36.domaincontrol.com A
+dig coefficientdata.uk
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk ANY
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk NS
+dig ns1.coefficietdata.uk
+dig coefficientdata.uk NS
+dig coefficientdata.uk NS
+dig coefficientdata.uk ANY +noall +answer
+dig coefficientdata.uk CNAME
+dig git.coefficientdata.uk
+dig coefficientdata.uk A
+dig coefficientdata.uk CNAME
+dig jumpbox.coefficientdata.uk
+exit
+ssh anas@jumpbox.coefficientdata.uk
+vim .ssh/config 
+ls .ssh/
+cat .ssh/id_rsa.pub 
+ssh jump
+ssh jump
+ssh jump
+ssh jump
+dig A ar11-cdn.hobir
+dig A ar11-cdn.hobir.isp.sky.com
+exit
+dig 84.38.34.122
+dig A 84.38.34.122
+dig ar11-cdn.hobir.isp.sky.com
+ping 89.200.128.177
+python
+vim lookup.txt
+dig -f lookup.txt
+dig PTR 89.200.128.177
+dig 89.200.128.177
+dig ar11-cdn.hobir.isp.sky.com
+dig 89.200.128.177
+dig -x 89.200.128.177 + short
+dig -x 89.200.128.177 +short
+vim lookup.txt 
+dig -xf lookup.txt
+dig -xf lookup.txt
+dig -f lookup.txt
+dig --help
+dig -h
+vim lookup.txt 
+dig -f lookup.txt -x +short
+dig -f lookup.txt +short
+dig -x 89.200.128.35 +short
+cat lookup.txt | xargs -Ih dig +noall +answer -x h
+cat lookup.txt | xargs -Ih dig +noall +answer -x h >> sky_devices.txt
+vim lookup.txt 
+dig -x 83.34.38.1 +short
+dig -x 83.34.38.122 +short
+dig A ar14-cdn.thlon.isp.sky.com
+dig A ar11-cdn.enlba.isp.sky.com
+dig A ar11-cdn.bllon.isp.sky.com
+dig A ar11-cdn.encax.isp.sky.com
+dig A ar11-cdn.enlcs.isp.sky.com
+dig A ar13.enlba.isp.sky.com
+dig A ar13.thlon.isp.sky.com
+dig A sr10.thlon.isp.sky.com
+vim lookup2.txt 
+vim lookup2.txt 
+dig -x 84.38.34.77 +short
+cat lookup2.txt | xargs -Ih dig +noall +answer -x h >> sky_devices_2.txt
+cat sky_devices_2.txt 
+dig exponential-e.com
+dig NS exponential-e.com
+dig A auth0.exponential-e.net
+dig -x 62.244.177.122 +short
+dig -x 62.244.177.179 +short
+dig -x 62.244.177.178 +short
+cp lookup.txt expo_lookup.txt
+whois exponential-e.com
+whois -h
+whois -help
+whois 62.244.177.0
+vim expo_lookup.txt 
+cat expo_lookup.txt | xargs -Ih dig +noall +answer -x h >> expo_devices.txt
+cat expo_devices.txt 
+whois 83.244.177.0
+cp expo_lookup.txt expo_lookup_2.txt
+vim expo_lookup_2.txt 
+cat expo_lookup_2.txt | xargs -Ih dig +noall +answer -x h >> expo_devices.txt
+cat expo_devices.txt 
+host 83.244.128.88
+host 83.244.128.228
+host -h
+host -t ptr sky.com
+host -t ptr isp.sky.com
+host -l isp.sky.com
+host -l sky.com
+whois -H --verbose exponential-e.com
+whois -H exponential-e.com
+whois  exponential-e.com
+whois  --verbose exponential-e.com
+whois AS25180
+whois 25180
+whois -t asnum 25180
+whois -h
+whois -- h
+ssh jump
+ping ukldn-ixhs-radius.exponential-e.net
+traceroute ukldn-ixhs-radius.exponential-e.net
+dig PTR exponential-e.net
+dig exponential-e.net
+dig exponential-e.net ANY
+dig exponential-e.com ANY
+dig exponential-e.net ANY
+dig exponential-e.net ANY
+traceroute ukldn-ixhs-radius.exponential-e.net
+dig @ns0.exponential-e.net exponential-e.com -t AXFR
+dig @ns1.exponential-e.net exponential-e.com -t AXFR
+nslookup -h
+nslookup
+dig exponential-e.com -t AXFR
+traceroute ukldn-ixhs-radius.exponential-e.net
+traceroute 62.244.177.254
+traceroute 62.244.177.20
+exit
+touch huck_finn.txt
+echo 'hello, my name is Adeel.' > huck_finn.txt 
+python
+python
+cd Downloads/
+ls
+bash Anaconda2-4.1.1-MacOSX-x86_64.sh 
+env
+exit
+ping www.bbc.co.uk
+todo.sh 
+t
+curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+vim .bash_profile
+ls
+cd anaconda2/
+ls
+cd
+python
+python
+python
+/Users/adeel/anaconda2/bin/jupyter_mac.command ; exit;
+open dash://{pandas}
+open dash://pandas
+/Users/adeel/anaconda2/bin/jupyter_mac.command ; exit;
+python
+conda install seaborn
+python
+ping ww.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+l
+ls
+cd Documents/
+l
+ls
+ls -l
+mkdir -p projects/skeleton/bin
+mkdir projects/skeleton/tabligh
+mkdir projects/skeleton/tests
+mkdir projects/skeleton/docs
+touch projects/skeleton/tabligh/__init__.py
+touch projects/skeleton/tests/__init__.py
+cd projects/skeleton/
+ls
+ls -l
+vim setup.py
+l
+ls
+vim tests/tabligh_tests.py
+vim tests/tabligh_tests.py
+ls -R
+nosetests 
+egrep -r tabligh
+l
+ls
+mv tabligh/ NAME
+ls
+ls NAME/
+vim setup.py 
+mv tests/tabligh_tests.py tests/NAME_tests.py
+ls tests/
+mv tests/tabligh_tests.pyc tests/NAME_tests.pyc
+ls tests/
+egrep -rn 'tabligh' *
+vim tests/NAME_tests.py
+nosetests 
+nosetests 
+egrep -rn 'tabligh' *
+cd Documents/
+ls
+vim mail_test.py
+vim mail_test.py
+ls
+vim ex1.py
+c
+cd 
+ls -la
+vim .gitconfig 
+ls .ssh
+git 
+git clone git@coefficientdata.uk:adeel/mydotfiles.git
+ls .ssh
+cat .ssh/id_rsa.pub 
+cat .ssh/github.pub 
+ssh -T git@git.coefficientdata.uk
+git clone git@coefficientdata.uk:adeel/mydotfiles.git
+eval $(ssh-agent -s)
+ssh-add .ssh/id_rsa
+git clone git@coefficientdata.uk:adeel/mydotfiles.git
+git clone git@git.coefficientdata.uk:adeel/mydotfiles.git
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ping www.bbc.co.uk
+ssh user@adeelahmad842.mylabserver.com
+md5 Downloads/
+md5 Downloads/virl.1.2.64.esxi-2.ova 
+ls -l Downloads/
+scp Downloads/virl.1.2.64.esxi-2.ova root@192.168.1.144:
+cd Downloads/
+ls -l
+ls -l vir*
+tar 
+tar -zxvf virl.1.2.64.esxi-2.ova
+ls -la vir8
+ls -la vir*
+ssh root@192.168.1.144
+ssh root@192.168.1.144
+vim Downloads/5877BAD9.virl.info.pem 
+cat Downloads/5877BAD9.virl.info.pem 
+ssh virl@192.168.1.107
+ping 192.168.1.107
+ssh virl@192.168.1.107
+ping 192.168.1.107
+ping 192.168.1.107
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+cd
+cd Downloads/
+cd ~
+cd Downloads/
+cd ~/Dropbox/
+cd ~
+pwd
+cd ~
+ls
+mkdir -p temp/stuff/things/orange/pear/grape
+mkdir -p temp/one/things/orange/pear/grape
+mkdir -p temp/two/things/orange/pear/grape
+mkdir -p temp/three/things/orange/pear/grape
+mkdir -p temp/four/things/orange/pear/grape
+mkdir -p temp/five/things/orange/pear/grape
+mkdir -p temp/six/things/orange/pear/grape
+mkdir -p temp/seven/things/orange/pear/grape
+mkdir -p temp/eight/things/orange/pear/grape
+mkdir -p temp/nine/things/orange/pear/grape
+mkdir -p temp/ten/things/orange/pear/grape
+mkdir -p temp/eleven/things/orange/pear/grape
+mkdir -p temp/twelve/things/orange/pear/grape
+mkdir -p temp/thirteen/things/orange/pear/grape
+mkdir -p temp/fourteen/things/orange/pear/grape
+mkdir -p temp/fifteen/things/orange/pear/grape
+mkdir -p temp/sixteen/things/orange/pear/grape
+mkdir -p temp/seventeen/things/orange/pear/grape
+mkdir -p temp/eighteen/things/orange/pear/grape
+mkdir -p temp/nineteen/things/orange/pear/grape
+mkdir -p temp/twenty/things/orange/pear/grape
+pwd
+mkdir "I have fun"
+ls
+cd temp/
+pwd
+cd stuff/
+pwd
+cd things/
+pw
+pwd
+cd orange/
+pwd
+pwd
+ls
+mkdir -p apple/pear
+cd apple/
+pwd
+cd pear/
+pwd
+mkdir grape
+ls
+cd grape/
+pwd
+cd ..
+cd ..
+pwd
+cd ..
+cd ..
+pwd
+cd ../../..
+pwd
+cd temp/stuff/things/orange/apple/pear/grape/
+pwd
+cd ../../../../../../../
+pwd
+pwd
+cd temp/stuff/things/orange/apple/
+cd ../../../..
+pwd
+cd
+cd "I have fun"/
+l
+ls
+pwd
+cd
+cd temp/
+mkdir -p i/like/icecream
+pushd i/like/icecream
+popd
+pwd
+pushd i/like
+pwd
+pushd icecream
+pwd
+popd
+pwd
+popd
+pwd
+pushd i/like/icecream
+pushd 
+pwd
+pushd 
+pwd
+popd 
+popd 
+man pushd
+vim ex1.py
+python ex1.py 
+vim ex1.py
+cat ex1.py 
+vim ex1.py
+python ex1.py 
+vim ex1.py
+python ex1.py 
+vim ex1.py
+python ex1.py 
+pwd
+touch iamcool.txt
+ls
+mkdir crazy
+cd crazy/
+touch fagol.txt
+cd ..
+ls
+rmdir crazy/
+rmdir -r crazy/
+rmdir -p crazy/
+rmdir -rf crazy/
+rmdir -f crazy/
+rmdir --h
+rmdir --help
+rm -r crazy/
+python
+ls
+vim ex12.py
+python ex12.py 
+pydoc raw_input
+vim ex13.py
+python ex13.py Isa Ibrahim Ahmad
+curl http://www.mosquedirectory.co.uk/search_mosque/mosquesearch.php?mosque=camden&page=1
+curl http://www.mosquedirectory.co.uk/search_mosque/mosquesearch.php?mosque=camden&page=1 | grep address
+curl http://www.mosquedirectory.co.uk/search_mosque/mosquesearch.php?mosque=camden&page=1
+lynx
+brew install lynx
+brew install html2text
+brew update 
+sudo brew update 
+sudo brew upgrade 
+sudo brew update
+curl http://www.mosquedirectory.co.uk/search_mosque/mosquesearch.php?mosque=camden&page=1 | sed -E 's/<[^>]*>//g'
+curl http://www.mosquedirectory.co.uk/search_mosque/mosquesearch.php?mosque=camden&page=1 | egrep title
+vi web_scrape.py
+vi web_scrape.py
+python web_scrape.py 
+cd
+pip install --user azure-cli
+mkvirtualenv azure
+pip install azure-cli
+pip install --user azure-cli
+sudo pip install azure-cli
+source deactivate
+deactivate
+azure help
+azure --version
+ll
+ls -la
+azure --completion >> ~/azure.completion.sh
+echo 'source ~/azure.completion.sh' >> ~/.bash_profile
+source .bash_profile
+azure login 
+azure config mode arm
+azure account list 
+azure feature list 
+azure webapp list 
+azure webapp list --verbose 
+ssh user@adeel841.mylabserver.com
+ssh user@adeel841.mylabserver.com
+ll .ssh/
+ls .ssh/
+ssh user@adeel842.mylabserver.com
+ssh user@54.154.158.68
+ssh user@54.154.158.68
+dig adeel842.mylabserver.com
+ping 54.154.158.68
+ssh user@54.154.158.68
+ssh-copy-id user@54.154.158.68
+ssh user@54.154.158.68
+ssh user@54.154.158.68
+head Downloads/sx9090.csv 
+head Downloads/sx9090.csv 
+vim
+curl https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx
+curl https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/Default.aspx | egrep "eventid=" -A1
+mkvirtualenv web_scraping
+pip install 
+python
+python
+pip install beautifulsoup
+sudo pip install beautifulsoup
+vim scraping.py
+python scraping.py 
+sudo pip install bs4
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py 
+vim scraping.py 
+python scraping.py | grep eventid
+vim scraping.py 
+python scraping.py | grep eventid
+python scraping.py
+l
+ls
+cat sql/
+vim windows_logs 
+vim scraping.py 
+l
+ls
+vim web_scrape.py 
+cat web_scrape.py 
+cat scraping.py 

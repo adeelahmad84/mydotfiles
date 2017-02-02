@@ -1,0 +1,6 @@
+#!/bin/bash /Users/adeel/anaconda2/bin/python.app
+if __name__ == '__main__':
+    import sys
+    import IPython
+
+    sys.exit(IPython.start_ipython())

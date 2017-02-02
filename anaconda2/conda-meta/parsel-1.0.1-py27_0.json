@@ -1,0 +1,53 @@
+{
+  "arch": "x86_64", 
+  "binstar": {
+    "channel": "main", 
+    "owner_id": "56031d0234e76b531b7a0a4c", 
+    "package_id": "56b3f9a69902f90a5138150d"
+  }, 
+  "build": "py27_0", 
+  "build_number": 0, 
+  "channel": "https://conda.anaconda.org/scrapinghub/osx-64", 
+  "depends": [
+    "cssselect >=0.9", 
+    "lxml", 
+    "python 2.7*", 
+    "six >=1.5.2", 
+    "w3lib >=1.8.0"
+  ], 
+  "files": [
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/PKG-INFO", 
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/SOURCES.txt", 
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/dependency_links.txt", 
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/not-zip-safe", 
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/requires.txt", 
+    "lib/python2.7/site-packages/parsel-1.0.1-py2.7.egg-info/top_level.txt", 
+    "lib/python2.7/site-packages/parsel/__init__.py", 
+    "lib/python2.7/site-packages/parsel/__init__.pyc", 
+    "lib/python2.7/site-packages/parsel/csstranslator.py", 
+    "lib/python2.7/site-packages/parsel/csstranslator.pyc", 
+    "lib/python2.7/site-packages/parsel/selector.py", 
+    "lib/python2.7/site-packages/parsel/selector.pyc", 
+    "lib/python2.7/site-packages/parsel/utils.py", 
+    "lib/python2.7/site-packages/parsel/utils.pyc"
+  ], 
+  "fn": "parsel-1.0.1-py27_0.tar.bz2", 
+  "license": "BSD License", 
+  "link": {
+    "source": "/Users/adeel/anaconda2/pkgs/parsel-1.0.1-py27_0", 
+    "type": "hard-link"
+  }, 
+  "machine": "x86_64", 
+  "md5": "f820c27498d469cd803ab596ffad1b41", 
+  "name": "parsel", 
+  "operatingsystem": "darwin", 
+  "platform": "osx", 
+  "priority": 1, 
+  "requires": [], 
+  "schannel": "scrapinghub", 
+  "size": 11739, 
+  "subdir": "osx-64", 
+  "target-triplet": "x86_64-any-darwin", 
+  "url": "https://conda.anaconda.org/scrapinghub/osx-64/parsel-1.0.1-py27_0.tar.bz2", 
+  "version": "1.0.1"
+}

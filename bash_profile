@@ -14,18 +14,14 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-
 # pip bash completion end
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
-
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
-
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
@@ -41,12 +37,7 @@ fi;
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config"  ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 source ssh-completion
-
-. ~/.git-completion.bash
-
 source ~/.local/bin/virtualenvwrapper.sh
+complete -F _todo t
 
 bind "set show-all-if-ambiguous on"
-
-source ~nadt/nadt-aliases.include.bash
-source ~francis.tilley/scripts/tools/scriptadds-all

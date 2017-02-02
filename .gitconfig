@@ -1,0 +1,67 @@
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = Adeel Ahmad
+	email = adeelahmad786@gmail.com
+
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	ca = !git add -A && git commit -av
+	st = status
+	unstage = reset HEAD --
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	last = log -1 HEAD
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	cm = !git add -A && git commit -am
+	undo = reset --soft HEAD~1
+	difflast = diff --cached HEAD^
+
+[core]
+	editor = vim
+	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+
+[commit]
+	template = $HOME/.gitmessage.txt
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[diff]
+	renames = copies
+	
+[diff "bin"]
+	textconv = hexdump -v -C
+
+[help]
+	autocorrect = 1
+	
+[merge]
+        log = true
+
+[http]
+	sslverify = false
+
+[apply]
+	whitespace = fix

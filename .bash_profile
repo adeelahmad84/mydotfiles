@@ -34,6 +34,14 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion
 fi
 
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash  ]; then
     complete -o default -o nospace -F _git g;
 fi;

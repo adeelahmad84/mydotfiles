@@ -1,6 +1,0 @@
-Host *
-    KeepAlive yes
-    ServerAliveInterval 600
-    Compression yes
-    HashKnownHosts no
-    StrictHostKeyChecking no

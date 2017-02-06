@@ -1,7 +1,0 @@
-#Equinox secure storage version 1.0
-#Wed Oct 12 18:30:59 BST 2016
-/VM\ Maestro/<default>/password=org.eclipse.equinox.security.osxkeystoreintegration\tGkAaJb9Bc0o\=,yIX0YCmTVmg\=
-org.eclipse.equinox.security.preferences.version=1
-org.eclipse.equinox.security.preferences.cipher=PBEWithMD5AndDES
-org.eclipse.equinox.security.preferences.keyFactory=PBEWithMD5AndDES
-/org.eclipse.equinox.secure.storage/verification/org.eclipse.equinox.security.osxkeystoreintegration=org.eclipse.equinox.security.osxkeystoreintegration\t0PP8eHnyrzA\=,x5u1v6BeIRtEHHjFTKo+sLli5f1jvoyP

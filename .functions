@@ -27,6 +27,11 @@ function giveme ()
     sudo pip install "$@"
 }
 
+function getme ()
+{
+    echo "3Xp0n3nt14l-1" | sudo -S apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y "$@"
+}
+
 function dns_check ()
 {
     for i in `seq "$1" "$2"`; do echo "$3".$i; dig -x "$3".$i +short @mdns1.bllon.isp.sky.com; sleep 1; done

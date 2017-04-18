@@ -29,7 +29,7 @@ function giveme ()
 
 function getme ()
 {
-    echo "3Xp0n3nt14l-1" | sudo -S apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y "$@"
+    echo "Pl3453_3nt3r_P@55W0RD" | sudo -S apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y "$@"
 }
 
 function dns_check ()

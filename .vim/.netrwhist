@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/adeel/mydotfiles/ssh'
 let g:netrw_dirhist_2='/Users/adeel/.config'
 let g:netrw_dirhist_3='/Users/adeel/.continuum'
+let g:netrw_dirhist_4='/home/aadeelah/BNG/deployment/roles/procedure'
+let g:netrw_dirhist_5='/home/aadeelah/BNG/deployment/pre-tasks'

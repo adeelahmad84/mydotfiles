@@ -70,3 +70,8 @@ function show ()
 {
     apt-cache search $1
 }
+
+function gi()
+{
+    curl -L -s https://www.gitignore.io/api/\$@ ;
+}
